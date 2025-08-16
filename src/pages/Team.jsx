@@ -2,8 +2,10 @@ import Card from "../components/Card";
 import "../pages/Team.css";
 import teamData from "../utils/data.json";
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import styles from '../layouts/Navbar.module.css';
 const Team = () => {
+  const navigate = useNavigate();
   const [selectedSection, setSelectedSection] = useState(null);
   const [showAppDropdown, setShowAppDropdown] = useState(false);
 
@@ -161,6 +163,7 @@ const Team = () => {
             <div className="lg:hidden block sticky top-[150px] sm:text-base text-2xl"></div>
           </div>
           <div className="grid col-span-12 mt-16 text-white xl:col-span-8 lg:col-span-8 md:col-span-9 sm:mt-0 z-50">
+            
           <h2 className="font-extrabold text-yellow m-auto uppercase lg:text-3xl sm:text-2xl text-3xl">
                   LEADS
                 </h2>
