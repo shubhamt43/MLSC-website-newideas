@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../layouts/Navbar";
 import { useEffect, useState } from "react";
 import ScrollToTop from "../components/ScrollToTop";
@@ -6,6 +6,7 @@ import bgvideo from "../assets/mlsc.mp4";
 
 const Root = () => {
   const [loading, setLoading] = useState(true);
+  const location = useLocation(); // 👈 get current route
 
   useEffect(() => {
     const preloader = document.getElementById("preloader");
@@ -24,6 +25,9 @@ const Root = () => {
     }, 4000);
   }, []);
 
+  // 👇 hide Navbar on dashboard page
+  const hideNavbar = location.pathname === "/teamassemble";
+
   return (
     <>
       {loading ? (
@@ -39,7 +43,7 @@ const Root = () => {
       ) : (
         <>
           <ScrollToTop />
-          <Navbar />
+          {!hideNavbar && <Navbar />} {/* 👈 only show when not on dashboard */}
           <Outlet />
         </>
       )}
